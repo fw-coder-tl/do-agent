@@ -2,7 +2,7 @@
 
 ## 快速开始
 
-本仓库已经整理为可独立运行的 Spring Boot 项目，不再依赖外层 `LLMentor` 父 Maven 工程。
+本仓库已经整理为可独立运行的 Spring Boot 项目。
 
 ### 环境要求
 
