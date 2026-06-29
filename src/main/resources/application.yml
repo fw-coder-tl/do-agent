@@ -1,0 +1,90 @@
+server:
+  port: 8888
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+spring:
+  ai:
+    openai:
+      api-key: ${DASHSCOPE_API_KEY:}
+      base-url: ${OPENAI_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode/}
+      chat:
+        options:
+          model: ${OPENAI_CHAT_MODEL:qwen-plus}
+          temperature: ${OPENAI_CHAT_TEMPERATURE:0.7}
+#          maxTokens: 5000
+
+      embedding:
+        base-url: ${OPENAI_EMBEDDING_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode/}
+        api-key: ${DASHSCOPE_API_KEY:}
+        options:
+          model: ${OPENAI_EMBEDDING_MODEL:text-embedding-v4}
+          dimmension: ${OPENAI_EMBEDDING_DIMENSION:1024}
+
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://127.0.0.1:3306/dodo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接池配置
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 60000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+
+  # Redis 配置
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      database: ${REDIS_DATABASE:0}
+      timeout: 5s
+      password: ${REDIS_PASSWORD:}
+
+  # MyBatis-Plus 配置
+  mybatis-plus:
+    mapper-locations: classpath:mapper/*.xml
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+minio:
+  url: ${MINIO_URL:http://127.0.0.1:9000/}
+  accessKey: ${MINIO_ACCESS_KEY:minioadmin}
+  secretKey: ${MINIO_SECRET_KEY:minioadmin}
+  bucketName: ${MINIO_BUCKET_NAME:dodo-agent}
+  endpoint: ${MINIO_ENDPOINT:http://127.0.0.1:9000/}
+
+embeddings:
+  store:
+    host: ${PGVECTOR_HOST:127.0.0.1}
+    port: ${PGVECTOR_PORT:5432}
+    database: ${PGVECTOR_DATABASE:vector_store}
+    user: ${PGVECTOR_USER:postgres}
+    password: ${PGVECTOR_PASSWORD:}
+
+# Tavily 搜索引擎配置
+tavily:
+  api-key: ${TAVILY_API_KEY:}
+  mcp-url: ${TAVILY_MCP_URL:https://mcp.tavily.com/mcp/}
+
+grsai:
+  nanobanana:
+    api-key: ${GRSAI_NANOBANANA_API_KEY:}
+
+logging:
+  level:
+    org:
+      springframework:
+        ai: INFO
+    io:
+      modelcontextprotocol:
+        client: ERROR
+skills:
+  directory: ${DODO_SKILLS_DIR:${user.home}/.claude/skills}
