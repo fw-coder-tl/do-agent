@@ -1,0 +1,60 @@
+{
+  "paragraphs": [
+    {
+      "index": 6,
+      "style": "Normal",
+      "text": "《软件工程综合课程实习》报告"
+    },
+    {
+      "index": 7,
+      "style": "Normal",
+      "text": "Report on Project of Course “Comprehensive Practical Training of Software Engineering”"
+    },
+    {
+      "index": 9,
+      "style": "Normal",
+      "text": "组长：                学号：            手机号："
+    },
+    {
+      "index": 10,
+      "style": "Normal",
+      "text": "组员： \t  学号："
+    },
+    {
+      "index": 11,
+      "style": "Normal",
+      "text": "学号："
+    },
+    {
+      "index": 12,
+      "style": "Normal",
+      "text": "学号："
+    },
+    {
+      "index": 19,
+      "style": "Normal",
+      "text": "成绩Grade："
+    },
+    {
+      "index": 22,
+      "style": "Normal",
+      "text": "河 海 大 学"
+    },
+    {
+      "index": 23,
+      "style": "Normal",
+      "text": "目录"
+    }
+  ],
+  "tables": [],
+  "sections": [
+    {
+      "page_width": 11906,
+      "page_height": 16838,
+      "top_margin": 1440,
+      "bottom_margin": 1440,
+      "left_margin": 1800,
+      "right_margin": 1800
+    }
+  ]
+}

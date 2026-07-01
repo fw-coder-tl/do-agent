@@ -1,14 +1,27 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { Moon, PanelLeftOpen, Sun } from 'lucide-vue-next'
 import Sidebar from '@/components/layout/Sidebar.vue'
 import EmptyState from '@/components/chat/EmptyState.vue'
 import ChatMessage from '@/components/chat/ChatMessage.vue'
 import ChatInput from '@/components/chat/ChatInput.vue'
 import ConnectionError from '@/components/common/ConnectionError.vue'
 import ConfirmDialog from '@/components/common/ConfirmDialog.vue'
+import { Button } from '@/components/ui/button'
 import { useChat } from '@/composables/useChat'
+import { useSidebarState } from '@/composables/useSidebarState'
+import { useTheme } from '@/composables/useTheme'
 
 const messagesContainer = ref<HTMLElement | null>(null)
+const { isDark, toggleTheme } = useTheme()
+const {
+  isSidebarCollapsed,
+  isSidebarPreviewOpen,
+  openSidebarPreview,
+  scheduleCloseSidebarPreview,
+  expandSidebar,
+  toggleSidebarCollapsed,
+} = useSidebarState()
 
 const {
   backendUrl,
@@ -47,27 +60,88 @@ const {
 } = useChat(messagesContainer)
 
 const chatHeaderTitle = computed(() => currentChat.value?.title ?? '豆豆')
+
+const themeToggleLabel = computed(() =>
+  isDark.value ? '切换到亮色主题' : '切换到暗色主题',
+)
+
+const sidebarBindProps = computed(() => ({
+  agents,
+  selectedAgent: selectedAgent.value,
+  chatList: chatList.value,
+  currentChatId: currentChatId.value,
+  backendUrl,
+}))
 </script>
 
 <template>
-  <div class="app-shell">
+  <div
+    class="app-shell"
+    :class="{ 'app-shell--sidebar-collapsed': isSidebarCollapsed }"
+  >
     <Sidebar
-      :agents="agents"
-      :selected-agent="selectedAgent"
-      :chat-list="chatList"
-      :current-chat-id="currentChatId"
-      :backend-url="backendUrl"
+      v-if="!isSidebarCollapsed"
+      :collapsed="false"
+      v-bind="sidebarBindProps"
       @create-new-chat="createNewChat"
       @select-agent="selectAgent"
       @select-chat="selectChat"
       @delete-chat="requestDeleteChat"
+      @toggle-collapse="toggleSidebarCollapsed"
     />
+
+    <button
+      v-if="isSidebarCollapsed"
+      type="button"
+      class="sidebar-floating-trigger"
+      title="展开侧边栏"
+      aria-label="展开侧边栏"
+      @mouseenter="openSidebarPreview"
+      @mouseleave="scheduleCloseSidebarPreview"
+      @click="expandSidebar"
+    >
+      <PanelLeftOpen class="sidebar-floating-trigger__icon" />
+    </button>
+
+    <Teleport to="body">
+      <div
+        v-if="isSidebarCollapsed && isSidebarPreviewOpen"
+        class="sidebar-preview-popover"
+        @mouseenter="openSidebarPreview"
+        @mouseleave="scheduleCloseSidebarPreview"
+      >
+        <Sidebar
+          preview
+          :collapsed="false"
+          v-bind="sidebarBindProps"
+          @create-new-chat="createNewChat"
+          @select-agent="selectAgent"
+          @select-chat="selectChat"
+          @delete-chat="requestDeleteChat"
+          @toggle-collapse="expandSidebar"
+        />
+      </div>
+    </Teleport>
 
     <main class="chat-panel">
       <header class="chat-header">
         <div class="chat-header__inner">
           <h1 class="chat-header__title">{{ chatHeaderTitle }}</h1>
           <p class="chat-header__hint">AI 生成可能有误 请核实</p>
+        </div>
+        <div class="chat-header__actions">
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            class="theme-toggle-btn"
+            :title="themeToggleLabel"
+            :aria-label="themeToggleLabel"
+            @click="toggleTheme"
+          >
+            <Moon v-if="!isDark" class="theme-toggle-btn__icon" />
+            <Sun v-else class="theme-toggle-btn__icon" />
+          </Button>
         </div>
       </header>
 

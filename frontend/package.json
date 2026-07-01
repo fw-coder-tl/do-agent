@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "build:spring": "node scripts/build-spring.mjs",
+    "build:spring": "node scripts/build-spring.mjs --profile new-ui",
+    "build:root": "node scripts/build-spring.mjs --profile root --dist-only",
+    "build:spring:root-staging": "node scripts/build-spring.mjs --profile root-staging",
+    "build:spring-root": "node scripts/build-spring.mjs --profile root-replace",
     "preview": "vite preview"
   },
   "dependencies": {

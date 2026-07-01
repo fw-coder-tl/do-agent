@@ -26,3 +26,6 @@ uploads/
 output/
 tmp/
 temp/
+tmp_*/
+frontend/dist/
+frontend/node_modules/

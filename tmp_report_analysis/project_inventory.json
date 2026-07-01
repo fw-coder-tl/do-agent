@@ -1,0 +1,888 @@
+{
+  "file_count": 139,
+  "suffixes": [
+    [
+      ".java",
+      117
+    ],
+    [
+      ".js",
+      5
+    ],
+    [
+      ".png",
+      3
+    ],
+    [
+      ".md",
+      2
+    ],
+    [
+      ".sql",
+      2
+    ],
+    [
+      ".py",
+      2
+    ],
+    [
+      ".example",
+      1
+    ],
+    [
+      "<none>",
+      1
+    ],
+    [
+      ".xml",
+      1
+    ],
+    [
+      ".pptx",
+      1
+    ],
+    [
+      ".yml",
+      1
+    ],
+    [
+      ".ico",
+      1
+    ],
+    [
+      ".html",
+      1
+    ],
+    [
+      ".css",
+      1
+    ]
+  ],
+  "java_count": 117,
+  "packages": [
+    [
+      "cn.hollis.llm.mentor.agent.agent.pptx.strategy",
+      11
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.entity.record",
+      11
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.service",
+      10
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.tool",
+      9
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.entity.record.pptx",
+      9
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.utils",
+      8
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.entity.vo",
+      6
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.config",
+      5
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.service.impl",
+      5
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.entity",
+      4
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.mapper",
+      4
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.prompts",
+      4
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.common",
+      3
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.context",
+      3
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.controller",
+      3
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.skills.manual.registry",
+      3
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.deepresearch",
+      2
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.pptx",
+      2
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.skills.manual",
+      2
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.skills.manual.model",
+      2
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.entity.event",
+      2
+    ],
+    [
+      "cn.hollis.llm.mentor.agent",
+      1
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent",
+      1
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.exception",
+      1
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.splitter",
+      1
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.file",
+      1
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.skills",
+      1
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.websearch",
+      1
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.skills.manual.config",
+      1
+    ],
+    [
+      "cn.hollis.llm.mentor.agent.agent.skills.manual.tool",
+      1
+    ]
+  ],
+  "classes": [
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\DodoAgentApplication.java",
+      "kind": "class",
+      "name": "DodoAgentApplication",
+      "lines": 14
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\BaseAgent.java",
+      "kind": "class",
+      "name": "BaseAgent",
+      "lines": 442
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\common\\AgentResponse.java",
+      "kind": "class",
+      "name": "AgentResponse",
+      "lines": 183
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\common\\BaseResult.java",
+      "kind": "class",
+      "name": "BaseResult",
+      "lines": 176
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\common\\ImageProvider.java",
+      "kind": "enum",
+      "name": "ImageProvider",
+      "lines": 16
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\config\\CorsConfig.java",
+      "kind": "class",
+      "name": "CorsConfig",
+      "lines": 39
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\config\\MinioClientConfiguration.java",
+      "kind": "class",
+      "name": "MinioClientConfiguration",
+      "lines": 28
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\config\\MySQLDataSourceConfig.java",
+      "kind": "class",
+      "name": "MySQLDataSourceConfig",
+      "lines": 27
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\config\\RedisConfig.java",
+      "kind": "class",
+      "name": "RedisConfig",
+      "lines": 28
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\config\\VectorStoreConfig.java",
+      "kind": "class",
+      "name": "VectorStoreConfig",
+      "lines": 42
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\context\\ContextCompactor.java",
+      "kind": "class",
+      "name": "ContextCompactor",
+      "lines": 270
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\context\\ContextPolicy.java",
+      "kind": "record",
+      "name": "ContextPolicy",
+      "lines": 86
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\context\\TokenEstimator.java",
+      "kind": "class",
+      "name": "TokenEstimator",
+      "lines": 111
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\controller\\AgentController.java",
+      "kind": "class",
+      "name": "AgentController",
+      "lines": 397
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\controller\\FileController.java",
+      "kind": "class",
+      "name": "FileController",
+      "lines": 159
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\controller\\SessionController.java",
+      "kind": "class",
+      "name": "SessionController",
+      "lines": 186
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\AiFileInfo.java",
+      "kind": "class",
+      "name": "AiFileInfo",
+      "lines": 92
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\AiSession.java",
+      "kind": "class",
+      "name": "AiSession",
+      "lines": 103
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\OverAllState.java",
+      "kind": "class",
+      "name": "OverAllState",
+      "lines": 104
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\SlideImage.java",
+      "kind": "class",
+      "name": "SlideImage",
+      "lines": 74
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\exception\\GlobalExceptionHandler.java",
+      "kind": "class",
+      "name": "GlobalExceptionHandler",
+      "lines": 171
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\mapper\\AiFileInfoMapper.java",
+      "kind": "interface",
+      "name": "AiFileInfoMapper",
+      "lines": 13
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\mapper\\AiPptInstMapper.java",
+      "kind": "interface",
+      "name": "AiPptInstMapper",
+      "lines": 13
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\mapper\\AiPptTemplateMapper.java",
+      "kind": "interface",
+      "name": "AiPptTemplateMapper",
+      "lines": 13
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\mapper\\AiSessionMapper.java",
+      "kind": "interface",
+      "name": "AiSessionMapper",
+      "lines": 26
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\prompts\\BaseAgentPrompts.java",
+      "kind": "class",
+      "name": "BaseAgentPrompts",
+      "lines": 105
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\prompts\\PlanExecutePrompts.java",
+      "kind": "class",
+      "name": "PlanExecutePrompts",
+      "lines": 358
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\prompts\\PptBuilderPrompts.java",
+      "kind": "class",
+      "name": "PptBuilderPrompts",
+      "lines": 537
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\prompts\\ReactAgentPrompts.java",
+      "kind": "class",
+      "name": "ReactAgentPrompts",
+      "lines": 280
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\AgentTaskManager.java",
+      "kind": "class",
+      "name": "AgentTaskManager",
+      "lines": 346
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\AiPptInstService.java",
+      "kind": "interface",
+      "name": "AiPptInstService",
+      "lines": 126
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\AiPptTemplateService.java",
+      "kind": "interface",
+      "name": "AiPptTemplateService",
+      "lines": 36
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\AiSessionService.java",
+      "kind": "interface",
+      "name": "AiSessionService",
+      "lines": 37
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\EmbeddingService.java",
+      "kind": "class",
+      "name": "EmbeddingService",
+      "lines": 134
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\FileInfoService.java",
+      "kind": "interface",
+      "name": "FileInfoService",
+      "lines": 53
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\FileManageService.java",
+      "kind": "class",
+      "name": "FileManageService",
+      "lines": 454
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\FileParserService.java",
+      "kind": "class",
+      "name": "FileParserService",
+      "lines": 200
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\MinioService.java",
+      "kind": "class",
+      "name": "MinioService",
+      "lines": 97
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\PptPythonRenderService.java",
+      "kind": "interface",
+      "name": "PptPythonRenderService",
+      "lines": 20
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\splitter\\OverlapParagraphTextSplitter.java",
+      "kind": "class",
+      "name": "OverlapParagraphTextSplitter",
+      "lines": 103
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\tool\\BashTool.java",
+      "kind": "class",
+      "name": "BashTool",
+      "lines": 332
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\tool\\FileContentService.java",
+      "kind": "class",
+      "name": "FileContentService",
+      "lines": 143
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\tool\\FileSystemTools.java",
+      "kind": "class",
+      "name": "FileSystemTools",
+      "lines": 802
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\tool\\GrepTool.java",
+      "kind": "class",
+      "name": "GrepTool",
+      "lines": 439
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\tool\\MarkdownParser.java",
+      "kind": "class",
+      "name": "MarkdownParser",
+      "lines": 99
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\tool\\ShellSessionManager.java",
+      "kind": "class",
+      "name": "ShellSessionManager",
+      "lines": 515
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\tool\\SkillsTool.java",
+      "kind": "class",
+      "name": "SkillsTool",
+      "lines": 252
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\tool\\ToolMergeUtils.java",
+      "kind": "class",
+      "name": "ToolMergeUtils",
+      "lines": 37
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\tool\\WeatherService.java",
+      "kind": "class",
+      "name": "WeatherService",
+      "lines": 26
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\utils\\AppContextClient.java",
+      "kind": "class",
+      "name": "AppContextClient",
+      "lines": 69
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\utils\\DynamicPgVectorStoreFactory.java",
+      "kind": "class",
+      "name": "DynamicPgVectorStoreFactory",
+      "lines": 81
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\utils\\HtmlRenderService.java",
+      "kind": "class",
+      "name": "HtmlRenderService",
+      "lines": 37
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\utils\\HtmlToPptService.java",
+      "kind": "class",
+      "name": "HtmlToPptService",
+      "lines": 56
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\utils\\HttpClientUtil.java",
+      "kind": "class",
+      "name": "HttpClientUtil",
+      "lines": 109
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\utils\\ImageGenerationService.java",
+      "kind": "class",
+      "name": "ImageGenerationService",
+      "lines": 239
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\utils\\ImageToPptService.java",
+      "kind": "class",
+      "name": "ImageToPptService",
+      "lines": 92
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\utils\\ThinkTagParser.java",
+      "kind": "class",
+      "name": "ThinkTagParser",
+      "lines": 108
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\deepresearch\\PlanExecuteAgent.java",
+      "kind": "class",
+      "name": "PlanExecuteAgent",
+      "lines": 1206
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\deepresearch\\SimpleReactAgent.java",
+      "kind": "class",
+      "name": "SimpleReactAgent",
+      "lines": 806
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\file\\FileReactAgent.java",
+      "kind": "class",
+      "name": "FileReactAgent",
+      "lines": 728
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\PPTBuilderAgent.java",
+      "kind": "class",
+      "name": "PPTBuilderAgent",
+      "lines": 317
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\PptIntentRecognizer.java",
+      "kind": "class",
+      "name": "PptIntentRecognizer",
+      "lines": 125
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\SkillsReactAgent.java",
+      "kind": "class",
+      "name": "SkillsReactAgent",
+      "lines": 651
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\websearch\\WebSearchReactAgent.java",
+      "kind": "class",
+      "name": "WebSearchReactAgent",
+      "lines": 715
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\FailedStrategy.java",
+      "kind": "class",
+      "name": "FailedStrategy",
+      "lines": 106
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\OutlineStrategy.java",
+      "kind": "class",
+      "name": "OutlineStrategy",
+      "lines": 84
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\PptStateStrategy.java",
+      "kind": "interface",
+      "name": "PptStateStrategy",
+      "lines": 33
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\PptStateStrategyContext.java",
+      "kind": "class",
+      "name": "PptStateStrategyContext",
+      "lines": 264
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\PptStateStrategyFactory.java",
+      "kind": "class",
+      "name": "PptStateStrategyFactory",
+      "lines": 141
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\RenderStrategy.java",
+      "kind": "class",
+      "name": "RenderStrategy",
+      "lines": 53
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\RequirementStrategy.java",
+      "kind": "class",
+      "name": "RequirementStrategy",
+      "lines": 101
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\SchemaStrategy.java",
+      "kind": "class",
+      "name": "SchemaStrategy",
+      "lines": 269
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\SearchStrategy.java",
+      "kind": "class",
+      "name": "SearchStrategy",
+      "lines": 100
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\SuccessStrategy.java",
+      "kind": "class",
+      "name": "SuccessStrategy",
+      "lines": 113
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\pptx\\strategy\\TemplateStrategy.java",
+      "kind": "class",
+      "name": "TemplateStrategy",
+      "lines": 86
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\manual\\SkillManager.java",
+      "kind": "class",
+      "name": "SkillManager",
+      "lines": 211
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\manual\\SkillPromptFormatter.java",
+      "kind": "class",
+      "name": "SkillPromptFormatter",
+      "lines": 56
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\manual\\config\\SkillConfig.java",
+      "kind": "class",
+      "name": "SkillConfig",
+      "lines": 78
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\manual\\model\\SkillLoadingException.java",
+      "kind": "class",
+      "name": "SkillLoadingException",
+      "lines": 53
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\manual\\model\\SkillMetadata.java",
+      "kind": "record",
+      "name": "SkillMetadata",
+      "lines": 132
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\manual\\registry\\AbstractSkillRegistry.java",
+      "kind": "class",
+      "name": "AbstractSkillRegistry",
+      "lines": 122
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\manual\\registry\\FileSystemSkillRegistry.java",
+      "kind": "class",
+      "name": "FileSystemSkillRegistry",
+      "lines": 229
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\manual\\registry\\SkillRegistry.java",
+      "kind": "interface",
+      "name": "SkillRegistry",
+      "lines": 36
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\agent\\skills\\manual\\tool\\ReadSkillTool.java",
+      "kind": "class",
+      "name": "ReadSkillTool",
+      "lines": 96
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\event\\AgentStreamEvent.java",
+      "kind": "interface",
+      "name": "AgentStreamEvent",
+      "lines": 115
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\event\\ToolRecord.java",
+      "kind": "record",
+      "name": "ToolRecord",
+      "lines": 19
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\AgentState.java",
+      "kind": "class",
+      "name": "AgentState",
+      "lines": 13
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\CritiqueResult.java",
+      "kind": "record",
+      "name": "CritiqueResult",
+      "lines": 11
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\FileInfo.java",
+      "kind": "class",
+      "name": "FileInfo",
+      "lines": 128
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\PlanTask.java",
+      "kind": "record",
+      "name": "PlanTask",
+      "lines": 12
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\ReactAgentResult.java",
+      "kind": "class",
+      "name": "ReactAgentResult",
+      "lines": 32
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\RoundMode.java",
+      "kind": "enum",
+      "name": "RoundMode",
+      "lines": 32
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\RoundState.java",
+      "kind": "class",
+      "name": "RoundState",
+      "lines": 29
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\SearchResult.java",
+      "kind": "record",
+      "name": "SearchResult",
+      "lines": 12
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\SimpleReactResult.java",
+      "kind": "class",
+      "name": "SimpleReactResult",
+      "lines": 31
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\TaskResult.java",
+      "kind": "record",
+      "name": "TaskResult",
+      "lines": 13
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\TemplateSelectionResult.java",
+      "kind": "class",
+      "name": "TemplateSelectionResult",
+      "lines": 26
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\vo\\MessageVO.java",
+      "kind": "class",
+      "name": "MessageVO",
+      "lines": 59
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\vo\\PageResult.java",
+      "kind": "class",
+      "name": "PageResult",
+      "lines": 34
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\vo\\SaveQuestionRequest.java",
+      "kind": "class",
+      "name": "SaveQuestionRequest",
+      "lines": 42
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\vo\\SessionDetailVO.java",
+      "kind": "class",
+      "name": "SessionDetailVO",
+      "lines": 34
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\vo\\SessionListVO.java",
+      "kind": "class",
+      "name": "SessionListVO",
+      "lines": 69
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\vo\\UpdateAnswerRequest.java",
+      "kind": "class",
+      "name": "UpdateAnswerRequest",
+      "lines": 57
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\pptx\\AiPptInst.java",
+      "kind": "class",
+      "name": "AiPptInst",
+      "lines": 117
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\pptx\\AiPptTemplate.java",
+      "kind": "class",
+      "name": "AiPptTemplate",
+      "lines": 79
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\pptx\\FieldData.java",
+      "kind": "class",
+      "name": "FieldData",
+      "lines": 43
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\pptx\\PptInstStatus.java",
+      "kind": "enum",
+      "name": "PptInstStatus",
+      "lines": 71
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\pptx\\PptIntent.java",
+      "kind": "enum",
+      "name": "PptIntent",
+      "lines": 47
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\pptx\\PptIntentResult.java",
+      "kind": "class",
+      "name": "PptIntentResult",
+      "lines": 23
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\pptx\\PptPageType.java",
+      "kind": "enum",
+      "name": "PptPageType",
+      "lines": 55
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\pptx\\PptSchema.java",
+      "kind": "class",
+      "name": "PptSchema",
+      "lines": 25
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\entity\\record\\pptx\\Slide.java",
+      "kind": "class",
+      "name": "Slide",
+      "lines": 39
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\impl\\AiPptInstServiceImpl.java",
+      "kind": "class",
+      "name": "AiPptInstServiceImpl",
+      "lines": 141
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\impl\\AiPptTemplateServiceImpl.java",
+      "kind": "class",
+      "name": "AiPptTemplateServiceImpl",
+      "lines": 42
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\impl\\AiSessionServiceImpl.java",
+      "kind": "class",
+      "name": "AiSessionServiceImpl",
+      "lines": 76
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\impl\\FileInfoServiceImpl.java",
+      "kind": "class",
+      "name": "FileInfoServiceImpl",
+      "lines": 117
+    },
+    {
+      "file": "src\\main\\java\\cn\\hollis\\llm\\mentor\\agent\\service\\impl\\PptPythonRenderServiceImpl.java",
+      "kind": "class",
+      "name": "PptPythonRenderServiceImpl",
+      "lines": 196
+    }
+  ]
+}

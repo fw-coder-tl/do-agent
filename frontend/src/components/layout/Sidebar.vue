@@ -4,10 +4,12 @@ import {
   FileText,
   MessageSquare,
   Microscope,
+  PanelLeftClose,
+  PanelLeftOpen,
   Plus,
   Presentation,
-  Search,
   Trash2,
+  User,
   Wrench,
 } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
@@ -15,19 +17,28 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import type { AgentConfig, AgentId } from '@/constants/agents'
 import type { ChatSummary } from '@/types/chat'
 
-const props = defineProps<{
-  agents: AgentConfig[]
-  selectedAgent: string
-  chatList: ChatSummary[]
-  currentChatId: string | null
-  backendUrl: string
-}>()
+const props = withDefaults(
+  defineProps<{
+    agents: AgentConfig[]
+    selectedAgent: string
+    chatList: ChatSummary[]
+    currentChatId: string | null
+    backendUrl: string
+    preview?: boolean
+    collapsed?: boolean
+  }>(),
+  {
+    preview: false,
+    collapsed: false,
+  },
+)
 
 defineEmits<{
   createNewChat: []
   selectAgent: [agentId: string]
   selectChat: [chatId: string]
   deleteChat: [chatId: string]
+  toggleCollapse: []
 }>()
 
 const agentIconMap: Record<AgentId, Component> = {
@@ -46,28 +57,53 @@ const isNewChatActive = computed(() => {
   const chat = props.chatList.find((c) => c.id === props.currentChatId)
   return chat?.isNew ?? false
 })
+
+const hasHistoryChats = computed(() =>
+  props.chatList.some((chat) => !chat.isNew),
+)
+
+/** 登录入口占位（暂无真实登录逻辑） */
+const loginPlaceholder = {
+  displayName: '未登录用户',
+  hint: '登录 / 注册',
+}
 </script>
 
 <template>
-  <aside class="sidebar app-sidebar">
+  <aside
+    class="sidebar app-sidebar"
+    :class="{
+      'app-sidebar--preview': preview,
+      'app-sidebar--collapsed': collapsed && !preview,
+    }"
+  >
     <div class="sidebar-top">
-      <div class="sidebar-search" role="search" aria-hidden="true">
-        <Search class="sidebar-search__icon" />
-        <input
-          type="search"
-          class="sidebar-search__input"
-          placeholder="搜索..."
-          readonly
-          tabindex="-1"
-          aria-hidden="true"
-        />
-        <kbd class="sidebar-search__kbd">Ctrl K</kbd>
+      <div class="sidebar-top__row">
+        <button type="button" class="sidebar-brand">
+          <span class="sidebar-brand__avatar">🌱</span>
+          <span class="sidebar-brand__name">豆豆</span>
+        </button>
+        <button
+          v-if="!preview"
+          type="button"
+          class="sidebar-collapse-btn"
+          title="收起侧边栏"
+          aria-label="收起侧边栏"
+          @click="$emit('toggleCollapse')"
+        >
+          <PanelLeftClose class="sidebar-collapse-btn__icon" />
+        </button>
+        <button
+          v-else
+          type="button"
+          class="sidebar-collapse-btn sidebar-collapse-btn--pin"
+          title="固定侧边栏"
+          aria-label="固定侧边栏"
+          @click="$emit('toggleCollapse')"
+        >
+          <PanelLeftOpen class="sidebar-collapse-btn__icon" />
+        </button>
       </div>
-
-      <button type="button" class="sidebar-brand">
-        <span class="sidebar-brand__avatar">🌱</span>
-        <span class="sidebar-brand__name">豆豆</span>
-      </button>
 
       <button
         type="button"
@@ -101,7 +137,10 @@ const isNewChatActive = computed(() => {
       </ul>
     </section>
 
-    <div class="sidebar-history">
+    <div
+      class="sidebar-history"
+      :class="{ 'sidebar-history--empty': !hasHistoryChats }"
+    >
       <h2 class="sidebar-history__title">历史对话</h2>
       <ScrollArea class="sidebar-scroll">
         <div class="chat-list">
@@ -131,13 +170,19 @@ const isNewChatActive = computed(() => {
     </div>
 
     <div class="sidebar-footer">
-      <div class="sidebar-account">
-        <span class="sidebar-account__avatar">🌱</span>
+      <button
+        type="button"
+        class="sidebar-account sidebar-account--login"
+        aria-label="登录入口（占位）"
+      >
+        <span class="sidebar-account__avatar">
+          <User class="sidebar-account__avatar-icon" />
+        </span>
         <div class="sidebar-account__info">
-          <span class="sidebar-account__name">豆豆工作台</span>
-          <span class="sidebar-account__meta">{{ backendUrl }}</span>
+          <span class="sidebar-account__name">{{ loginPlaceholder.displayName }}</span>
+          <span class="sidebar-account__meta">{{ loginPlaceholder.hint }}</span>
         </div>
-      </div>
+      </button>
     </div>
   </aside>
 </template>

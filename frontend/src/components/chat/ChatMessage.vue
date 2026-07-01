@@ -52,9 +52,6 @@ onUpdated(() => {
 
 <template>
   <div :class="['message', message.role]">
-    <div class="message-avatar">
-      {{ message.role === 'user' ? '👤' : '🤖' }}
-    </div>
     <div class="message-content">
       <template v-if="message.role === 'user'">
         <div class="user-message">

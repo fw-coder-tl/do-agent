@@ -91,11 +91,34 @@ const textareaPlaceholder = computed(() => {
   }
   return '发消息...'
 })
+
+const isFocused = ref(false)
+
+const isExpanded = computed(
+  () =>
+    isFocused.value ||
+    localMessage.value.trim().length > 0 ||
+    !!props.selectedFile ||
+    props.isUploading ||
+    props.isSending,
+)
+
+function onTextareaFocus(): void {
+  isFocused.value = true
+}
+
+function onTextareaBlur(): void {
+  isFocused.value = false
+}
 </script>
 
 <template>
   <div class="input-area">
-    <div class="input-area__inner">
+    <div
+      class="input-area__inner"
+      :class="{ 'input-area__inner--expanded': isExpanded }"
+      :data-expanded="isExpanded ? 'true' : 'false'"
+    >
       <div class="input-card">
         <FilePreview
           v-if="selectedFile"
@@ -120,6 +143,8 @@ const textareaPlaceholder = computed(() => {
             class="input-card__textarea min-h-[24px] max-h-[200px] flex-1 resize-none border-0 bg-transparent px-0 py-0 shadow-none focus-visible:ring-0"
             :placeholder="textareaPlaceholder"
             rows="1"
+            @focus="onTextareaFocus"
+            @blur="onTextareaBlur"
             @keydown.enter.exact="onEnter"
           />
         </div>

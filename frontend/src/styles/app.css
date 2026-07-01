@@ -1717,6 +1717,7 @@ textarea::placeholder {
 /* === Layout skeleton (step 2): 浅色聊天布局 === */
 :root {
     --sidebar-width: 320px;
+    --sidebar-collapsed-width: 72px;
     --layout-shell-bg: #f5f6f8;
     --layout-panel-bg: #ffffff;
     --layout-sidebar-bg: #f7f7f8;
@@ -1754,8 +1755,9 @@ body {
 
 .app-sidebar {
     width: var(--sidebar-width);
-    min-width: 280px;
-    max-width: 340px;
+    flex: 0 0 var(--sidebar-width);
+    min-width: 0;
+    max-width: var(--sidebar-width);
     height: 100vh;
     flex-shrink: 0;
     background: var(--layout-sidebar-bg);
@@ -1763,6 +1765,10 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition:
+        flex-basis 0.2s ease,
+        width 0.2s ease,
+        max-width 0.2s ease;
 }
 
 .app-sidebar__separator {
@@ -2288,8 +2294,8 @@ body {
     min-height: 64px;
     max-height: 68px;
     padding: 10px 24px;
-    background: #ffffff;
-    border-bottom-color: #ececef;
+    background: var(--app-panel-bg);
+    border-bottom-color: var(--app-border);
 }
 
 .chat-header__inner {
@@ -2305,7 +2311,7 @@ body {
 .chat-header__title {
     font-size: 15px;
     font-weight: 600;
-    color: #111827;
+    color: var(--app-text-primary);
     line-height: 1.3;
 }
 
@@ -2313,7 +2319,7 @@ body {
     margin: 0;
     font-size: 12px;
     font-weight: 400;
-    color: #9ca3af;
+    color: var(--app-text-faint);
     line-height: 1.3;
     white-space: nowrap;
     overflow: hidden;
@@ -2322,11 +2328,11 @@ body {
 }
 
 .chat-panel {
-    background: #ffffff;
+    background: var(--app-panel-bg);
 }
 
 .chat-panel__body {
-    background: #ffffff;
+    background: var(--app-panel-bg);
 }
 
 .app-shell .messages-container {
@@ -2945,8 +2951,8 @@ body {
 }
 
 .app-shell .chat-panel__footer {
-    background: #ffffff;
-    border-top-color: #ececef;
+    background: var(--app-panel-bg);
+    border-top-color: var(--app-border);
     padding: 12px 24px 20px;
 }
 
@@ -3353,6 +3359,1272 @@ body {
         white-space: normal;
         text-align: center;
         line-height: 1.35;
+    }
+}
+
+/* === Main content width expansion: 主聊天区横向撑开 === */
+:root {
+    --layout-content-max-width: 1120px;
+    --layout-content-width: min(85%, var(--layout-content-max-width));
+    --layout-messages-max-width: var(--layout-content-width);
+    --layout-input-max-width: var(--layout-content-width);
+    --layout-user-bubble-max-width: min(85%, 920px);
+    --layout-quick-actions-max-width: min(100%, 960px);
+    --layout-recommend-pill-max-width: min(100%, 720px);
+}
+
+.app-shell .messages-container {
+    width: var(--layout-content-width);
+    max-width: var(--layout-messages-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.app-shell .input-area__inner {
+    width: var(--layout-input-width-compact);
+    max-width: var(--layout-input-width-compact);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    transition:
+        width 0.28s ease,
+        max-width 0.28s ease;
+}
+
+/* 输入框交互宽度：默认较短，聚焦/输入后展开 */
+:root {
+    --layout-input-width-compact: min(100%, 680px);
+    --layout-input-width-expanded: min(100%, 860px);
+}
+
+.app-shell .input-area__inner--expanded,
+.app-shell .input-area__inner[data-expanded='true'] {
+    width: var(--layout-input-width-expanded);
+    max-width: var(--layout-input-width-expanded);
+}
+
+@media (min-width: 1440px) {
+    :root {
+        --layout-input-width-compact: min(100%, 720px);
+        --layout-input-width-expanded: min(100%, 900px);
+    }
+}
+
+@media (max-width: 768px) {
+    .app-shell .input-area__inner,
+    .app-shell .input-area__inner--expanded,
+    .app-shell .input-area__inner[data-expanded='true'] {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.app-shell .input-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.app-shell .user-message {
+    max-width: var(--layout-user-bubble-max-width);
+}
+
+.app-shell .quick-actions {
+    width: 100%;
+    max-width: var(--layout-quick-actions-max-width);
+}
+
+.app-shell .recommend-pills {
+    width: 100%;
+}
+
+.app-shell .recommend-pill {
+    max-width: var(--layout-recommend-pill-max-width);
+}
+
+.chat-header__title {
+    max-width: min(100%, var(--layout-content-max-width));
+}
+
+@media (min-width: 1440px) {
+    :root {
+        --layout-content-max-width: 1120px;
+        --layout-content-width: min(82%, var(--layout-content-max-width));
+    }
+
+    .app-shell .messages-container {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .chat-panel__footer {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media (min-width: 1920px) {
+    :root {
+        --layout-content-max-width: 1120px;
+        --layout-content-width: min(80%, var(--layout-content-max-width));
+    }
+}
+
+@media (max-width: 1280px) {
+    :root {
+        --layout-content-width: min(calc(100% - 32px), var(--layout-content-max-width));
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --layout-content-width: 100%;
+        --layout-messages-max-width: 100%;
+        --layout-input-max-width: 100%;
+        --layout-user-bubble-max-width: min(88%, 820px);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --layout-user-bubble-max-width: 92%;
+        --layout-quick-actions-max-width: 100%;
+        --layout-recommend-pill-max-width: 100%;
+    }
+}
+
+/* === UI polish: 侧栏登录占位 / 无消息头像 / agent 图标 === */
+.sidebar-account--login {
+    width: 100%;
+    border: none;
+    background: transparent;
+    cursor: default;
+    text-align: left;
+    font: inherit;
+}
+
+.sidebar-account--login .sidebar-account__avatar {
+    color: #6b7280;
+}
+
+.sidebar-account__avatar-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.sidebar-account--login .sidebar-account__meta {
+    color: #9ca3af;
+}
+
+.app-shell .message {
+    gap: 0;
+}
+
+.app-shell .message-avatar {
+    display: none;
+}
+
+.app-shell .message.user {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.app-shell .message.assistant {
+    align-items: flex-start;
+}
+
+.app-shell .agent-pill__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #6b7280;
+}
+
+.app-shell .agent-pill--active .agent-pill__icon {
+    color: #374151;
+}
+
+/* === Theme system: light / dark === */
+:root,
+[data-theme='light'] {
+    --app-bg: #f5f6f8;
+    --app-panel-bg: #ffffff;
+    --app-sidebar-bg: #fafafa;
+    --app-border: #ececef;
+    --app-border-subtle: #e8e8ec;
+    --app-text-primary: #111827;
+    --app-text-secondary: #374151;
+    --app-text-muted: #6b7280;
+    --app-text-faint: #9ca3af;
+    --app-surface-subtle: #f3f3f4;
+    --app-surface-muted: #f9fafb;
+    --app-surface-hover: #f0f0f2;
+    --app-surface-active: #e8e8ea;
+    --app-surface-elevated: #ffffff;
+    --app-user-bubble-bg: #f3f3f4;
+    --app-input-bg: #ffffff;
+    --app-input-border: #e8e8ec;
+    --app-input-focus-ring: rgba(59, 130, 246, 0.08);
+    --app-input-focus-border: #bfdbfe;
+    --app-code-bg: #f8f9fa;
+    --app-code-inline-bg: #f3f3f4;
+    --app-code-inline-color: #be185d;
+    --app-link: #2563eb;
+    --app-link-hover: #1d4ed8;
+    --app-danger-bg: #fef2f2;
+    --app-danger-text: #ef4444;
+    --app-success-bg: #f0fdf4;
+    --app-success-text: #166534;
+    --app-success-border: #bbf7d0;
+    --app-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --app-shadow-input: 0 1px 3px rgba(15, 23, 42, 0.06);
+    --layout-shell-bg: var(--app-bg);
+    --layout-panel-bg: var(--app-panel-bg);
+    --layout-sidebar-bg: var(--app-sidebar-bg);
+    --layout-border: var(--app-border);
+}
+
+[data-theme='dark'] {
+    --app-bg: #141416;
+    --app-panel-bg: #1c1c1f;
+    --app-sidebar-bg: #18181b;
+    --app-border: #2e2e33;
+    --app-border-subtle: #2a2a2e;
+    --app-text-primary: #f4f4f5;
+    --app-text-secondary: #d4d4d8;
+    --app-text-muted: #a1a1aa;
+    --app-text-faint: #71717a;
+    --app-surface-subtle: #27272a;
+    --app-surface-muted: #232326;
+    --app-surface-hover: #2a2a2e;
+    --app-surface-active: #323238;
+    --app-surface-elevated: #232326;
+    --app-user-bubble-bg: #27272a;
+    --app-input-bg: #232326;
+    --app-input-border: #2e2e33;
+    --app-input-focus-ring: rgba(96, 165, 250, 0.12);
+    --app-input-focus-border: #3b82f6;
+    --app-code-bg: #232326;
+    --app-code-inline-bg: #27272a;
+    --app-code-inline-color: #f472b6;
+    --app-link: #60a5fa;
+    --app-link-hover: #93c5fd;
+    --app-danger-bg: #3f1d1d;
+    --app-danger-text: #fca5a5;
+    --app-success-bg: #14291a;
+    --app-success-text: #86efac;
+    --app-success-border: #166534;
+    --app-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --app-shadow-input: 0 1px 3px rgba(0, 0, 0, 0.35);
+    --layout-shell-bg: var(--app-bg);
+    --layout-panel-bg: var(--app-panel-bg);
+    --layout-sidebar-bg: var(--app-sidebar-bg);
+    --layout-border: var(--app-border);
+}
+
+body {
+    background: var(--app-bg);
+    color: var(--app-text-primary);
+}
+
+.chat-header {
+    position: relative;
+    background: var(--app-panel-bg);
+    border-bottom-color: var(--app-border);
+}
+
+.chat-header__title {
+    color: var(--app-text-primary);
+}
+
+.chat-header__hint {
+    color: var(--app-text-faint);
+}
+
+.chat-panel,
+.chat-panel__body,
+.chat-panel__footer {
+    background: var(--app-panel-bg);
+    border-color: var(--app-border);
+}
+
+.app-sidebar {
+    background: var(--app-sidebar-bg);
+    border-right-color: var(--app-border);
+}
+
+.app-sidebar .sidebar-top,
+.app-sidebar .sidebar-footer {
+    background: var(--app-sidebar-bg);
+    border-color: var(--app-border);
+}
+
+.app-sidebar .sidebar-footer {
+    border-top: 1px solid var(--app-border);
+}
+
+.sidebar-brand__avatar,
+.sidebar-account__avatar {
+    background: var(--app-surface-elevated);
+    border-color: var(--app-border);
+}
+
+.sidebar-brand__name,
+.sidebar-new-chat,
+.sidebar-capabilities__title,
+.sidebar-history__title,
+.sidebar-capability__label,
+.sidebar-account__name {
+    color: var(--app-text-primary);
+}
+
+.sidebar-new-chat,
+.sidebar-capability,
+.sidebar-account--login {
+    color: var(--app-text-secondary);
+}
+
+.sidebar-new-chat:hover,
+.sidebar-capability:hover,
+.sidebar-account:hover,
+.sidebar-account--login:hover {
+    background: var(--app-surface-hover);
+}
+
+.sidebar-new-chat--active,
+.sidebar-capability--active {
+    background: var(--app-surface-elevated);
+    border-color: var(--app-border);
+    color: var(--app-text-primary);
+    box-shadow: var(--app-shadow-sm);
+}
+
+.sidebar-capability__icon,
+.sidebar-account--login .sidebar-account__avatar {
+    color: var(--app-text-muted);
+}
+
+.sidebar-account__meta {
+    color: var(--app-text-faint);
+}
+
+.app-sidebar .chat-item {
+    color: var(--app-text-secondary);
+}
+
+.app-sidebar .chat-item:hover {
+    background: var(--app-surface-hover);
+}
+
+.app-sidebar .chat-item.active {
+    background: var(--app-surface-elevated);
+    border-color: var(--app-border);
+    color: var(--app-text-primary);
+}
+
+.app-sidebar .chat-title {
+    color: inherit;
+}
+
+.app-sidebar .delete-btn:hover {
+    background: var(--app-danger-bg) !important;
+    color: var(--app-danger-text) !important;
+}
+
+.app-shell .empty-state {
+    color: var(--app-text-muted);
+}
+
+.app-shell .empty-state__title {
+    color: var(--app-text-primary);
+}
+
+.app-shell .empty-state__subtitle {
+    color: var(--app-text-faint);
+}
+
+.app-shell .quick-pill,
+.app-shell .recommend-pill {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-secondary);
+}
+
+.app-shell .quick-pill:hover,
+.app-shell .recommend-pill:hover {
+    background: var(--app-surface-active);
+}
+
+.app-shell .quick-pill__icon {
+    color: var(--app-text-muted);
+}
+
+.app-shell .user-message {
+    background: var(--app-user-bubble-bg);
+    color: var(--app-text-primary);
+}
+
+.app-shell .user-message .file-attachment {
+    background: var(--app-surface-active);
+    color: var(--app-text-secondary);
+}
+
+.app-shell .ai-message,
+.app-shell .text-content,
+.app-shell .markdown-body {
+    color: var(--app-text-secondary);
+}
+
+.app-shell .markdown-body h1,
+.app-shell .markdown-body h2,
+.app-shell .markdown-body h3,
+.app-shell .markdown-body h4,
+.app-shell .markdown-body h5,
+.app-shell .markdown-body h6 {
+    color: var(--app-text-primary);
+}
+
+.app-shell .markdown-body code {
+    background: var(--app-code-inline-bg);
+    color: var(--app-code-inline-color);
+    border-color: var(--app-border);
+}
+
+.app-shell .markdown-body pre {
+    background: var(--app-code-bg);
+    border-color: var(--app-border);
+}
+
+.app-shell .markdown-body pre code {
+    color: var(--app-text-secondary);
+}
+
+.app-shell .markdown-body blockquote {
+    border-left-color: var(--app-border);
+    background: var(--app-surface-muted);
+    color: var(--app-text-muted);
+}
+
+.app-shell .markdown-body a {
+    color: var(--app-link);
+}
+
+.app-shell .markdown-body a:hover {
+    color: var(--app-link-hover);
+}
+
+.app-shell .markdown-body tr:hover {
+    background: var(--app-surface-muted);
+}
+
+.app-shell .thinking-loading .dot {
+    background: var(--app-text-faint);
+}
+
+.app-shell .timeline-section,
+.app-shell .reference-section {
+    border-color: var(--app-border);
+    background: var(--app-surface-muted);
+}
+
+.app-shell .timeline-header,
+.app-shell .reference-header {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-muted);
+}
+
+.app-shell .timeline-header:hover,
+.app-shell .reference-header:hover {
+    background: var(--app-surface-active);
+}
+
+.app-shell .timeline-icon-wrapper,
+.app-shell .reference-icon-wrapper,
+.app-shell .reference-link {
+    background: var(--app-surface-elevated);
+    border-color: var(--app-border);
+}
+
+.app-shell .timeline-main-icon,
+.app-shell .timeline-thinking,
+.app-shell .timeline-tool-name,
+.app-shell .reference-icon,
+.app-shell .ref-url-text {
+    color: var(--app-text-muted);
+}
+
+.app-shell .reference-link:hover {
+    background: var(--app-surface-muted);
+    border-color: var(--app-border-subtle);
+}
+
+.app-shell .ppt-link {
+    background: var(--app-success-bg);
+    color: var(--app-success-text);
+    border-color: var(--app-success-border);
+}
+
+.app-shell .copy-btn {
+    background: var(--app-surface-muted);
+    border-color: var(--app-border);
+    color: var(--app-text-faint);
+}
+
+.app-shell .copy-btn:hover {
+    background: var(--app-surface-subtle);
+    border-color: var(--app-border-subtle);
+    color: var(--app-text-muted);
+}
+
+.app-shell .input-card {
+    background: var(--app-input-bg);
+    border-color: var(--app-input-border);
+    box-shadow: var(--app-shadow-input);
+}
+
+.app-shell .input-card:focus-within {
+    border-color: var(--app-input-focus-border);
+    box-shadow:
+        0 0 0 3px var(--app-input-focus-ring),
+        var(--app-shadow-input);
+}
+
+.app-shell .input-card__textarea {
+    color: var(--app-text-primary);
+}
+
+.app-shell .input-card__textarea::placeholder {
+    color: var(--app-text-faint);
+}
+
+.app-shell .input-card__toolbar {
+    border-top-color: var(--app-surface-subtle);
+}
+
+.app-shell .input-file-badge {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-muted);
+}
+
+.app-shell .agent-pill {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-secondary);
+}
+
+.app-shell .agent-pill:hover {
+    background: var(--app-surface-active);
+}
+
+.app-shell .agent-pill--active {
+    background: var(--app-surface-elevated);
+    border-color: var(--app-border);
+    color: var(--app-text-primary);
+    box-shadow: var(--app-shadow-sm);
+}
+
+.app-shell .agent-pill__icon {
+    color: var(--app-text-muted);
+}
+
+.app-shell .agent-pill--active .agent-pill__icon {
+    color: var(--app-text-secondary);
+}
+
+.app-shell .file-btn,
+.app-shell .send-btn {
+    color: var(--app-text-muted);
+}
+
+.app-shell .send-btn--active,
+.app-shell .send-btn.stop {
+    color: var(--app-text-primary);
+}
+
+.app-shell .file-preview-item {
+    background: var(--app-surface-muted);
+    border-color: var(--app-border);
+}
+
+.app-shell .file-name {
+    color: var(--app-text-primary);
+}
+
+.app-shell .file-size,
+.app-shell .upload-parsing {
+    color: var(--app-text-faint);
+}
+
+.connection-error {
+    background: var(--app-surface-elevated);
+    border-color: var(--app-border);
+    color: var(--app-text-secondary);
+}
+
+/* Footer / input: .app-shell 前缀覆盖 step 5 硬编码 */
+.app-shell .chat-panel__footer {
+    background: var(--app-panel-bg);
+    border-top-color: var(--app-border);
+}
+
+.app-shell .input-area,
+.app-shell .input-area__inner {
+    background: transparent;
+}
+
+.app-shell .input-card__toolbar {
+    border-top-color: var(--app-surface-subtle);
+}
+
+.app-shell .input-file-badge {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-muted);
+}
+
+.app-shell .file-btn {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-muted);
+}
+
+.app-shell .file-btn:hover:not(:disabled) {
+    background: var(--app-surface-active);
+    color: var(--app-text-secondary);
+}
+
+.app-shell .send-btn {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-faint);
+}
+
+.app-shell .send-btn--active:not(:disabled) {
+    background: var(--app-text-primary);
+    color: var(--app-bg);
+}
+
+.app-shell .send-btn--active:not(:disabled):hover {
+    background: var(--app-text-secondary);
+    color: var(--app-bg);
+}
+
+.app-shell .send-btn.stop {
+    background: var(--app-danger-bg);
+    color: var(--app-danger-text);
+}
+
+.app-shell .send-btn.stop:hover:not(:disabled) {
+    background: var(--app-danger-bg);
+    filter: brightness(1.08);
+}
+
+.app-shell .file-preview-item__icon {
+    background: var(--app-surface-elevated);
+    color: var(--app-text-muted);
+}
+
+.sidebar-new-chat__icon,
+.sidebar-new-chat--active .sidebar-new-chat__icon,
+.sidebar-capability__icon,
+.sidebar-capability--active .sidebar-capability__icon {
+    color: var(--app-text-muted);
+}
+
+.sidebar-new-chat--active .sidebar-new-chat__icon,
+.sidebar-capability--active .sidebar-capability__icon {
+    color: var(--app-text-primary);
+}
+
+.sidebar-capabilities__title,
+.sidebar-history__title {
+    color: var(--app-text-faint);
+}
+
+.sidebar-account--login .sidebar-account__avatar,
+.sidebar-account--login .sidebar-account__meta {
+    color: var(--app-text-muted);
+}
+
+.sidebar-account--login .sidebar-account__meta {
+    color: var(--app-text-faint);
+}
+
+.app-shell .agent-pill__icon {
+    color: var(--app-text-muted);
+}
+
+.app-shell .agent-pill--active .agent-pill__icon {
+    color: var(--app-text-secondary);
+}
+
+/* 暗色主题：高优先级兜底（覆盖 step 3–6 残留硬编码） */
+[data-theme='dark'] .app-shell .chat-panel,
+[data-theme='dark'] .app-shell .chat-panel__body,
+[data-theme='dark'] .app-shell .chat-panel__footer,
+[data-theme='dark'] .app-shell .input-area {
+    background: var(--app-panel-bg);
+}
+
+[data-theme='dark'] .app-shell .chat-panel__footer {
+    border-top-color: var(--app-border);
+}
+
+[data-theme='dark'] .app-shell .input-area__inner {
+    background: transparent;
+}
+
+[data-theme='dark'] .app-shell .input-card {
+    background: var(--app-input-bg);
+    border-color: var(--app-input-border);
+    box-shadow: var(--app-shadow-input);
+}
+
+[data-theme='dark'] .app-shell .input-card:focus-within {
+    border-color: var(--app-input-focus-border);
+    box-shadow:
+        0 0 0 3px var(--app-input-focus-ring),
+        var(--app-shadow-input);
+}
+
+[data-theme='dark'] .app-shell .input-card__textarea {
+    color: var(--app-text-primary);
+}
+
+[data-theme='dark'] .app-shell .input-card__textarea::placeholder {
+    color: var(--app-text-faint);
+}
+
+[data-theme='dark'] .app-sidebar {
+    background: var(--app-sidebar-bg);
+    border-right-color: var(--app-border);
+}
+
+[data-theme='dark'] .sidebar-brand__name,
+[data-theme='dark'] .sidebar-new-chat,
+[data-theme='dark'] .sidebar-capability,
+[data-theme='dark'] .sidebar-capability__label,
+[data-theme='dark'] .sidebar-account__name,
+[data-theme='dark'] .app-sidebar .chat-title,
+[data-theme='dark'] .app-sidebar .chat-item.active .chat-title {
+    color: var(--app-text-primary);
+}
+
+[data-theme='dark'] .sidebar-new-chat,
+[data-theme='dark'] .sidebar-capability,
+[data-theme='dark'] .sidebar-account--login,
+[data-theme='dark'] .app-sidebar .chat-item {
+    color: var(--app-text-secondary);
+}
+
+[data-theme='dark'] .sidebar-new-chat:hover,
+[data-theme='dark'] .sidebar-capability:hover,
+[data-theme='dark'] .sidebar-account:hover,
+[data-theme='dark'] .sidebar-account--login:hover,
+[data-theme='dark'] .app-sidebar .chat-item:hover {
+    background: var(--app-surface-hover);
+}
+
+[data-theme='dark'] .sidebar-new-chat--active,
+[data-theme='dark'] .sidebar-capability--active,
+[data-theme='dark'] .app-sidebar .chat-item.active {
+    background: var(--app-surface-elevated);
+    border-color: var(--app-border);
+    color: var(--app-text-primary);
+}
+
+[data-theme='dark'] .sidebar-brand__avatar,
+[data-theme='dark'] .sidebar-account__avatar {
+    background: var(--app-surface-elevated);
+    border-color: var(--app-border);
+}
+
+[data-theme='dark'] .chat-header {
+    background: var(--app-panel-bg);
+    border-bottom-color: var(--app-border);
+}
+
+[data-theme='dark'] .chat-header__title {
+    color: var(--app-text-primary);
+}
+
+[data-theme='dark'] .chat-header__hint {
+    color: var(--app-text-faint);
+}
+
+[data-theme='dark'] .app-shell .empty-state__title {
+    color: var(--app-text-primary);
+}
+
+[data-theme='dark'] .app-shell .empty-state__subtitle {
+    color: var(--app-text-faint);
+}
+
+[data-theme='dark'] .app-shell .quick-pill,
+[data-theme='dark'] .app-shell .recommend-pill {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-secondary);
+}
+
+[data-theme='dark'] .app-shell .quick-pill:hover,
+[data-theme='dark'] .app-shell .recommend-pill:hover {
+    background: var(--app-surface-active);
+}
+
+[data-theme='dark'] .app-shell .agent-pill {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-secondary);
+}
+
+[data-theme='dark'] .app-shell .agent-pill:hover {
+    background: var(--app-surface-active);
+}
+
+[data-theme='dark'] .app-shell .agent-pill--active {
+    background: var(--app-surface-elevated);
+    border-color: var(--app-border);
+    color: var(--app-text-primary);
+}
+
+[data-theme='dark'] .app-shell .file-btn,
+[data-theme='dark'] .app-shell .send-btn {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-muted);
+}
+
+[data-theme='dark'] .app-shell .file-btn:hover:not(:disabled) {
+    background: var(--app-surface-active);
+    color: var(--app-text-secondary);
+}
+
+[data-theme='dark'] .app-shell .send-btn--active:not(:disabled) {
+    background: var(--app-text-primary);
+    color: var(--app-bg);
+}
+
+[data-theme='dark'] .app-shell .file-preview-item {
+    background: var(--app-surface-muted);
+    border-color: var(--app-border);
+}
+
+[data-theme='dark'] .app-shell .file-preview-item__icon {
+    background: var(--app-surface-elevated);
+    color: var(--app-text-muted);
+}
+
+[data-theme='dark'] .app-shell .copy-btn {
+    background: var(--app-surface-muted);
+    border-color: var(--app-border);
+    color: var(--app-text-faint);
+}
+
+[data-theme='dark'] .app-shell .copy-btn:hover {
+    background: var(--app-surface-subtle);
+    color: var(--app-text-muted);
+}
+
+/* 代码高亮：暗色主题本地覆盖（不依赖 CDN） */
+[data-theme='dark'] .app-shell .markdown-body .hljs,
+[data-theme='dark'] .app-shell .markdown-body pre code.hljs {
+    background: var(--app-code-bg);
+    color: var(--app-text-secondary);
+}
+
+[data-theme='dark'] .app-shell .markdown-body .hljs-comment,
+[data-theme='dark'] .app-shell .markdown-body .hljs-quote {
+    color: var(--app-text-faint);
+    font-style: italic;
+}
+
+[data-theme='dark'] .app-shell .markdown-body .hljs-keyword,
+[data-theme='dark'] .app-shell .markdown-body .hljs-selector-tag,
+[data-theme='dark'] .app-shell .markdown-body .hljs-built_in,
+[data-theme='dark'] .app-shell .markdown-body .hljs-type {
+    color: #c678dd;
+}
+
+[data-theme='dark'] .app-shell .markdown-body .hljs-string,
+[data-theme='dark'] .app-shell .markdown-body .hljs-attr,
+[data-theme='dark'] .app-shell .markdown-body .hljs-symbol,
+[data-theme='dark'] .app-shell .markdown-body .hljs-bullet {
+    color: #98c379;
+}
+
+[data-theme='dark'] .app-shell .markdown-body .hljs-number,
+[data-theme='dark'] .app-shell .markdown-body .hljs-literal {
+    color: #d19a66;
+}
+
+[data-theme='dark'] .app-shell .markdown-body .hljs-title,
+[data-theme='dark'] .app-shell .markdown-body .hljs-section,
+[data-theme='dark'] .app-shell .markdown-body .hljs-name {
+    color: #61afef;
+}
+
+[data-theme='dark'] .app-shell .markdown-body .hljs-variable,
+[data-theme='dark'] .app-shell .markdown-body .hljs-template-variable,
+[data-theme='dark'] .app-shell .markdown-body .hljs-attribute {
+    color: #e06c75;
+}
+
+[data-theme='dark'] .app-shell .markdown-body .hljs-meta,
+[data-theme='dark'] .app-shell .markdown-body .hljs-link {
+    color: #56b6c2;
+}
+
+/* === Sidebar collapse: fully hidden + hover preview === */
+.app-shell--sidebar-collapsed {
+    --sidebar-width: 0px;
+    --layout-input-width-compact: min(100%, 720px);
+    --layout-input-width-expanded: min(100%, 920px);
+}
+
+.app-shell--sidebar-collapsed .chat-panel {
+    width: 100%;
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar-top__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+}
+
+.sidebar-brand {
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar-collapse-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--app-text-muted);
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.sidebar-collapse-btn:hover {
+    background: var(--app-surface-hover);
+    color: var(--app-text-primary);
+}
+
+.sidebar-collapse-btn__icon {
+    width: 18px;
+    height: 18px;
+}
+
+.sidebar-floating-trigger {
+    position: fixed;
+    left: 16px;
+    top: 16px;
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--app-border);
+    border-radius: 10px;
+    background: var(--app-surface-elevated);
+    color: var(--app-text-secondary);
+    cursor: pointer;
+    box-shadow: var(--app-shadow-sm);
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.sidebar-floating-trigger:hover {
+    background: var(--app-surface-hover);
+    border-color: var(--app-border-subtle);
+    color: var(--app-text-primary);
+    box-shadow: var(--app-shadow-input);
+}
+
+.sidebar-floating-trigger__icon {
+    width: 18px;
+    height: 18px;
+}
+
+.sidebar-preview-popover {
+    position: fixed;
+    left: 16px;
+    top: 54px;
+    width: 300px;
+    max-height: calc(100vh - 72px);
+    z-index: 70;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--app-sidebar-bg);
+    border: 1px solid var(--app-border);
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.12),
+        0 2px 8px rgba(15, 23, 42, 0.06);
+    display: flex;
+    flex-direction: column;
+    /* 脱离 app-shell--sidebar-collapsed 的 0 宽度变量 */
+    --sidebar-width: 300px;
+}
+
+[data-theme='dark'] .sidebar-preview-popover {
+    background: var(--app-sidebar-bg);
+    border-color: var(--app-border);
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.45),
+        0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar-preview-popover .sidebar,
+.sidebar-preview-popover .app-sidebar {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    max-height: calc(100vh - 72px);
+    flex: none;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    border-right: none;
+    overflow: hidden;
+}
+
+.sidebar-preview-popover .sidebar-brand__name,
+.sidebar-preview-popover .sidebar-new-chat__label,
+.sidebar-preview-popover .sidebar-capabilities__title,
+.sidebar-preview-popover .sidebar-capability__label,
+.sidebar-preview-popover .sidebar-history__title,
+.sidebar-preview-popover .chat-title,
+.sidebar-preview-popover .sidebar-account__info,
+.sidebar-preview-popover .sidebar-account__name,
+.sidebar-preview-popover .sidebar-account__meta {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    overflow: visible;
+    pointer-events: auto;
+}
+
+.sidebar-preview-popover .sidebar-capabilities,
+.sidebar-preview-popover .sidebar-history,
+.sidebar-preview-popover .sidebar-footer {
+    display: flex;
+}
+
+.sidebar-preview-popover .sidebar-capabilities {
+    flex-direction: column;
+}
+
+.app-shell--sidebar-collapsed .sidebar-preview-popover .app-sidebar,
+.app-shell--sidebar-collapsed .sidebar-preview-popover .sidebar {
+    width: 100%;
+    max-width: 100%;
+    flex: none;
+    --sidebar-width: 300px;
+}
+
+.app-sidebar--preview {
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 72px);
+    min-height: 0;
+    flex: none;
+    border-right: none;
+    --sidebar-width: 300px;
+}
+
+.app-sidebar--preview .sidebar-history {
+    flex: 1;
+    min-height: 0;
+    max-height: min(42vh, 320px);
+    display: flex;
+    flex-direction: column;
+}
+
+.app-sidebar--preview .sidebar-scroll {
+    flex: 1;
+    min-height: 120px;
+    max-height: min(36vh, 280px);
+}
+
+.app-sidebar--preview .sidebar-scroll [data-slot='scroll-area-viewport'] {
+    max-height: min(36vh, 280px);
+}
+
+.sidebar-history--empty .sidebar-scroll {
+    flex: 0 0 auto;
+    min-height: 0;
+}
+
+.chat-header {
+    position: relative;
+}
+
+.chat-header__actions {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+}
+
+.chat-header__actions .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 0;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--app-text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    transition:
+        background-color 0.16s ease,
+        border-color 0.16s ease,
+        color 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+.chat-header__actions .theme-toggle-btn:hover {
+    background: var(--app-surface-subtle);
+    border-color: var(--app-border);
+    color: var(--app-text-primary);
+}
+
+.chat-header__actions .theme-toggle-btn:active {
+    background: var(--app-surface-active);
+}
+
+.chat-header__actions .theme-toggle-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--app-input-focus-ring);
+    border-color: var(--app-input-focus-border);
+}
+
+.theme-toggle-btn__icon {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+}
+
+[data-theme='dark'] .chat-header__actions .theme-toggle-btn {
+    color: var(--app-text-muted);
+}
+
+[data-theme='dark'] .chat-header__actions .theme-toggle-btn:hover {
+    background: var(--app-surface-hover);
+    border-color: var(--app-border-subtle);
+    color: var(--app-text-primary);
+}
+
+[data-theme='dark'] .chat-header__actions .theme-toggle-btn:active {
+    background: var(--app-surface-active);
+}
+
+.chat-header__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 0 56px;
+    box-sizing: border-box;
+}
+
+/* 空状态推荐问题：暗色对比度与 hover */
+[data-theme='dark'] .app-shell .quick-pill,
+[data-theme='dark'] .app-shell .recommend-pill {
+    background: var(--app-surface-active);
+    color: var(--app-text-primary);
+    border: 1px solid var(--app-border-subtle);
+}
+
+[data-theme='dark'] .app-shell .quick-pill:hover,
+[data-theme='dark'] .app-shell .recommend-pill:hover {
+    background: var(--app-surface-hover);
+    border-color: var(--app-border);
+}
+
+[data-theme='dark'] .app-shell .quick-pill__icon {
+    color: var(--app-text-secondary);
+}
+
+/* 发送按钮暗色态更清晰 */
+[data-theme='dark'] .app-shell .send-btn {
+    background: var(--app-surface-active);
+    color: var(--app-text-muted);
+}
+
+[data-theme='dark'] .app-shell .send-btn--active:not(:disabled) {
+    background: var(--app-text-primary);
+    color: var(--app-bg);
+}
+
+[data-theme='dark'] .app-shell .send-btn--active:not(:disabled):hover {
+    background: #e4e4e7;
+    color: var(--app-bg);
+}
+
+[data-theme='dark'] .app-shell .send-btn:disabled {
+    opacity: 0.35;
+}
+
+/* 侧栏选中态：亮/暗均克制 */
+.sidebar-new-chat--active,
+.sidebar-capability--active {
+    box-shadow: var(--app-shadow-sm);
+}
+
+[data-theme='dark'] .sidebar-new-chat--active,
+[data-theme='dark'] .sidebar-capability--active,
+[data-theme='dark'] .app-sidebar .chat-item.active {
+    box-shadow: inset 0 0 0 1px var(--app-border-subtle);
+}
+
+@media (max-width: 768px) {
+    .chat-header__actions {
+        right: 12px;
+    }
+
+    .chat-header__actions .theme-toggle-btn {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        min-height: 34px;
+    }
+
+    .chat-header__inner {
+        padding: 0 48px;
+    }
+
+    .sidebar-floating-trigger {
+        left: 12px;
+        top: 12px;
+    }
+
+    .sidebar-preview-popover {
+        left: 12px;
+        top: 52px;
+        width: min(300px, calc(100vw - 24px));
     }
 }
 
