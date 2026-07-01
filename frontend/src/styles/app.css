@@ -1894,12 +1894,13 @@ body {
 
 @media (max-width: 768px) {
     :root {
-        --sidebar-width: 260px;
+        --sidebar-width: 220px;
         --layout-input-max-width: 100%;
     }
 
     .app-sidebar {
-        min-width: 240px;
+        min-width: 0;
+        max-width: 220px;
     }
 
     .app-shell .messages-container {
@@ -1912,6 +1913,10 @@ body {
 
     .chat-panel__footer {
         padding: 10px 12px 14px;
+    }
+
+    .chat-panel {
+        min-width: 0;
     }
 }
 
@@ -2964,7 +2969,7 @@ body {
     }
 
     .app-shell .input-card__toolbar {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         align-items: center;
     }
 
@@ -2973,10 +2978,20 @@ body {
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        min-width: 0;
     }
 
     .app-shell .input-card__tools::-webkit-scrollbar {
         display: none;
+    }
+
+    .app-shell .agent-selector {
+        flex-wrap: nowrap;
+        overflow: visible;
+    }
+
+    .app-shell .agent-pill {
+        flex-shrink: 0;
     }
 
     .app-shell .chat-panel__footer {
@@ -3146,12 +3161,13 @@ body {
 
 @media (max-width: 768px) {
     :root {
-        --sidebar-width: 240px;
+        --sidebar-width: 220px;
     }
 
     .app-sidebar {
+        width: var(--sidebar-width);
         min-width: 0;
-        max-width: 38vw;
+        max-width: 220px;
     }
 
     .sidebar-search__kbd {
@@ -3161,15 +3177,39 @@ body {
     .app-shell .recommend-pills {
         justify-content: center;
     }
+
+    .chat-panel {
+        min-width: 0;
+    }
 }
 
 @media (max-width: 520px) {
     :root {
-        --sidebar-width: min(40vw, 160px);
+        --sidebar-width: 68px;
     }
 
     .app-sidebar {
-        max-width: 160px;
+        width: 68px;
+        min-width: 68px;
+        max-width: 68px;
+    }
+
+    .app-sidebar .sidebar-top {
+        padding: 10px 6px 8px;
+        gap: 6px;
+        align-items: center;
+    }
+
+    .sidebar-search {
+        justify-content: center;
+        padding: 0;
+        width: 40px;
+        height: 36px;
+    }
+
+    .sidebar-search__input,
+    .sidebar-search__kbd {
+        display: none;
     }
 
     .app-sidebar .sidebar-capabilities {
@@ -3177,27 +3217,117 @@ body {
     }
 
     .sidebar-brand__name,
-    .sidebar-new-chat__label {
+    .sidebar-new-chat__label,
+    .sidebar-history__title,
+    .sidebar-account__info {
         display: none;
     }
 
     .sidebar-brand,
     .sidebar-new-chat {
         justify-content: center;
-        padding-left: 8px;
-        padding-right: 8px;
+        padding: 6px;
+        width: 100%;
     }
 
-    .sidebar-account__info {
+    .sidebar-brand__avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
+
+    .app-sidebar .sidebar-history {
+        padding: 0 4px 6px;
+    }
+
+    .app-sidebar .chat-item {
+        padding: 8px 4px;
+        justify-content: center;
+    }
+
+    .app-sidebar .chat-title {
+        font-size: 10px;
+        max-width: 56px;
+        text-align: center;
+    }
+
+    .app-sidebar .delete-btn {
         display: none;
     }
 
     .sidebar-account {
         justify-content: center;
+        padding: 6px 4px;
+    }
+
+    .sidebar-account__avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
+
+    .app-sidebar .sidebar-footer {
+        padding: 8px 4px 10px;
+    }
+
+    .chat-panel {
+        min-width: 0;
+    }
+
+    .app-shell .chat-panel__footer {
+        padding: 8px;
+    }
+
+    .app-shell .messages-container {
+        padding: 12px 10px 20px;
+    }
+
+    .app-shell .input-area__inner {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .app-shell .input-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        border-radius: var(--ui-radius-md);
+        padding: 10px 10px 8px;
+    }
+
+    .app-shell .input-card__toolbar {
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .app-shell .input-card__tools {
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .app-shell .input-card__tools::-webkit-scrollbar {
+        display: none;
+    }
+
+    .app-shell .agent-selector {
+        flex-wrap: nowrap;
+    }
+
+    .app-shell .agent-pill {
+        flex-shrink: 0;
     }
 
     .app-shell .agent-pill__name {
-        max-width: 56px;
+        max-width: none;
+    }
+
+    .app-shell .send-btn {
+        flex-shrink: 0;
     }
 
     .app-shell .empty-state__title {
@@ -3207,36 +3337,22 @@ body {
     .app-shell .quick-pill {
         font-size: 13px;
         padding: 8px 12px;
+        max-width: 100%;
     }
 
-    .app-shell .input-card {
-        border-radius: var(--ui-radius-md);
+    .app-shell .quick-actions {
+        width: 100%;
+        padding: 0 4px;
+    }
+
+    .chat-header {
+        padding: 8px 10px;
     }
 
     .chat-header__hint {
         white-space: normal;
         text-align: center;
         line-height: 1.35;
-    }
-}
-
-@media (max-width: 390px) {
-    :root {
-        --sidebar-width: 148px;
-    }
-
-    .app-sidebar {
-        max-width: 148px;
-    }
-
-    .sidebar-search {
-        padding: 0 8px;
-    }
-
-    .sidebar-search__input {
-        width: 0;
-        flex: 1;
-        min-width: 0;
     }
 }
 
