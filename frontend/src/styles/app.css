@@ -3642,15 +3642,6 @@ body {
     color: var(--app-text-faint);
 }
 
-.chat-header__theme-toggle {
-    color: var(--app-text-muted);
-}
-
-.chat-header__theme-toggle:hover {
-    color: var(--app-text-primary);
-    background: var(--app-surface-subtle);
-}
-
 .chat-panel,
 .chat-panel__body,
 .chat-panel__footer {
@@ -4485,31 +4476,70 @@ body {
 
 .chat-header__actions {
     position: absolute;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     display: inline-flex;
     align-items: center;
-    gap: 2px;
+    gap: 8px;
     z-index: 2;
 }
 
-.chat-header__actions--left {
-    left: 20px;
+.chat-header__actions .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 0;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--app-text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    transition:
+        background-color 0.16s ease,
+        border-color 0.16s ease,
+        color 0.16s ease,
+        box-shadow 0.16s ease;
 }
 
-.chat-header__actions--right {
-    right: 20px;
+.chat-header__actions .theme-toggle-btn:hover {
+    background: var(--app-surface-subtle);
+    border-color: var(--app-border);
+    color: var(--app-text-primary);
 }
 
-.chat-header__theme-toggle {
-    position: static;
-    transform: none;
+.chat-header__actions .theme-toggle-btn:active {
+    background: var(--app-surface-active);
+}
+
+.chat-header__actions .theme-toggle-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--app-input-focus-ring);
+    border-color: var(--app-input-focus-border);
+}
+
+.theme-toggle-btn__icon {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+}
+
+[data-theme='dark'] .chat-header__actions .theme-toggle-btn {
     color: var(--app-text-muted);
 }
 
-.chat-header__theme-toggle:hover {
+[data-theme='dark'] .chat-header__actions .theme-toggle-btn:hover {
+    background: var(--app-surface-hover);
+    border-color: var(--app-border-subtle);
     color: var(--app-text-primary);
-    background: var(--app-surface-subtle);
+}
+
+[data-theme='dark'] .chat-header__actions .theme-toggle-btn:active {
+    background: var(--app-surface-active);
 }
 
 .chat-header__inner {
@@ -4571,8 +4601,15 @@ body {
 }
 
 @media (max-width: 768px) {
-    .chat-header__actions--right {
+    .chat-header__actions {
         right: 12px;
+    }
+
+    .chat-header__actions .theme-toggle-btn {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        min-height: 34px;
     }
 
     .chat-header__inner {

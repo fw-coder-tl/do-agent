@@ -129,18 +129,18 @@ const sidebarBindProps = computed(() => ({
           <h1 class="chat-header__title">{{ chatHeaderTitle }}</h1>
           <p class="chat-header__hint">AI 生成可能有误 请核实</p>
         </div>
-        <div class="chat-header__actions chat-header__actions--right">
+        <div class="chat-header__actions">
           <Button
             type="button"
             variant="ghost"
             size="icon"
-            class="chat-header__theme-toggle"
+            class="theme-toggle-btn"
             :title="themeToggleLabel"
             :aria-label="themeToggleLabel"
             @click="toggleTheme"
           >
-            <Moon v-if="!isDark" class="size-4" />
-            <Sun v-else class="size-4" />
+            <Moon v-if="!isDark" class="theme-toggle-btn__icon" />
+            <Sun v-else class="theme-toggle-btn__icon" />
           </Button>
         </div>
       </header>
