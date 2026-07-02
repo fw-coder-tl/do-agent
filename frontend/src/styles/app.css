@@ -3356,6 +3356,107 @@ body {
     }
 }
 
+/* === Main content width expansion: 主聊天区横向撑开 === */
+:root {
+    --layout-content-max-width: 1120px;
+    --layout-content-width: min(85%, var(--layout-content-max-width));
+    --layout-messages-max-width: var(--layout-content-width);
+    --layout-input-max-width: var(--layout-content-width);
+    --layout-user-bubble-max-width: min(85%, 920px);
+    --layout-quick-actions-max-width: min(100%, 960px);
+    --layout-recommend-pill-max-width: min(100%, 720px);
+}
+
+.app-shell .messages-container {
+    width: var(--layout-content-width);
+    max-width: var(--layout-messages-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.app-shell .input-area__inner {
+    width: var(--layout-content-width);
+    max-width: var(--layout-input-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.app-shell .input-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.app-shell .user-message {
+    max-width: var(--layout-user-bubble-max-width);
+}
+
+.app-shell .quick-actions {
+    width: 100%;
+    max-width: var(--layout-quick-actions-max-width);
+}
+
+.app-shell .recommend-pills {
+    width: 100%;
+}
+
+.app-shell .recommend-pill {
+    max-width: var(--layout-recommend-pill-max-width);
+}
+
+.chat-header__title {
+    max-width: min(100%, var(--layout-content-max-width));
+}
+
+@media (min-width: 1440px) {
+    :root {
+        --layout-content-max-width: 1120px;
+        --layout-content-width: min(82%, var(--layout-content-max-width));
+    }
+
+    .app-shell .messages-container {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .chat-panel__footer {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media (min-width: 1920px) {
+    :root {
+        --layout-content-max-width: 1120px;
+        --layout-content-width: min(80%, var(--layout-content-max-width));
+    }
+}
+
+@media (max-width: 1280px) {
+    :root {
+        --layout-content-width: min(calc(100% - 32px), var(--layout-content-max-width));
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --layout-content-width: 100%;
+        --layout-messages-max-width: 100%;
+        --layout-input-max-width: 100%;
+        --layout-user-bubble-max-width: min(88%, 820px);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --layout-user-bubble-max-width: 92%;
+        --layout-quick-actions-max-width: 100%;
+        --layout-recommend-pill-max-width: 100%;
+    }
+}
+
 
 
 @layer base {
